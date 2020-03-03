@@ -17,6 +17,24 @@
  under the License.
 #}
 
+
+<script>
+    import {defaultFormatWithTZ, moment} from 'www_rbac/static/js/datetime-utils.js';
+
+    function displayTime() {
+
+        let cstTime = moment().tz("Asia/Shanghai").format(defaultFormatWithTZ);
+
+        $('#clock')
+            .attr("data-original-title", function() {
+                return hostName
+            })
+            .html(cstTime);
+
+        setTimeout(displayTime, 1000);
+    }
+</script>
+
 {% macro locale_menu(languages) %}
 {% set locale = session['locale'] %}
 {% if not locale %}
