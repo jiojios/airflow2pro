@@ -19,12 +19,14 @@
 import {defaultFormatWithTZ, moment} from './datetime-utils';
 
 function displayTime() {
-  let utcTime = moment().utc().format(defaultFormatWithTZ);
+
+  let cstTime = moment().tz("Asia/Shanghai").format(defaultFormatWithTZ);
+
   $('#clock')
     .attr("data-original-title", function() {
       return hostName
     })
-    .html(utcTime);
+    .html(cstTime);
 
   setTimeout(displayTime, 1000);
 }
